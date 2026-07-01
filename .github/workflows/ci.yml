@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  workflow-lint:
+    uses: ./.github/workflows/workflow-lint.yml
+
+    permissions:
+      security-events: write
