@@ -1,33 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices"],
-  "dependencyDashboardApproval": true,
+  "extends": ["config:best-practices", "group:allNonMajor"],
   "enabledManagers": ["npm", "github-actions"],
-  "platformCommit": "enabled",
-  "semanticCommits": "disabled",
+  "dependencyDashboardApproval": true,
   "vulnerabilityAlerts": {
     "dependencyDashboardApproval": false
   },
+  "platformCommit": "enabled",
+  "semanticCommits": "disabled",
   "packageRules": [
     {
-      "description": "Group npm production minor/patch updates into a single PR",
-      "matchManagers": ["npm"],
-      "matchDepTypes": ["dependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "production dependencies (non-major)"
-    },
-    {
-      "description": "Group npm development minor/patch updates into a single PR",
-      "matchManagers": ["npm"],
-      "matchDepTypes": ["devDependencies"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "development dependencies (non-major)"
-    },
-    {
-      "description": "Group GitHub Actions non-major updates into a single PR",
+      "description": "Apply the same cooldown to GitHub Actions as npm dependencies",
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor", "patch", "digest"],
-      "groupName": "GitHub Actions (non-major)"
+      "minimumReleaseAge": "3 days"
     },
     {
       "description": "Bump @types/node major manually to match the Node.js version in devEngines.runtime, which Renovate cannot update yet (renovatebot/renovate#38067)",
