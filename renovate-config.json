@@ -1,29 +1,23 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:best-practices", "group:allNonMajor"],
+  "extends": [
+    "config:best-practices",
+    "group:allNonMajor",
+    "helpers:disableTypesNodeMajor"
+  ],
   "enabledManagers": ["npm", "github-actions"],
   "dependencyDashboardApproval": true,
   "vulnerabilityAlerts": {
     "dependencyDashboardApproval": false
   },
+  "minimumReleaseAge": "3 days",
   "platformCommit": "enabled",
   "semanticCommits": "disabled",
   "packageRules": [
     {
-      "description": "Apply the same cooldown to GitHub Actions as npm dependencies",
-      "matchManagers": ["github-actions"],
-      "minimumReleaseAge": "3 days"
-    },
-    {
       "description": "First-party packages; skip the release-age waiting period and update immediately",
       "matchPackageNames": ["@ublacklist/*"],
       "minimumReleaseAge": null
-    },
-    {
-      "description": "Bump @types/node major manually to match the Node.js version in devEngines.runtime, which Renovate cannot update yet (renovatebot/renovate#38067)",
-      "matchPackageNames": ["@types/node"],
-      "matchUpdateTypes": ["major"],
-      "enabled": false
     }
   ]
 }
