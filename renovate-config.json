@@ -6,10 +6,6 @@
     "helpers:disableTypesNodeMajor"
   ],
   "enabledManagers": ["npm", "github-actions"],
-  "dependencyDashboardApproval": true,
-  "vulnerabilityAlerts": {
-    "dependencyDashboardApproval": false
-  },
   "minimumReleaseAge": "3 days",
   "platformCommit": "enabled",
   "semanticCommits": "disabled",
@@ -19,5 +15,8 @@
       "matchPackageNames": ["@ublacklist/*"],
       "minimumReleaseAge": null
     }
-  ]
+  ],
+  "lockFileMaintenance": {
+    "schedule": ["* * L * *"]
+  }
 }
