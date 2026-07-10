@@ -8,6 +8,7 @@
   "enabledManagers": ["npm", "github-actions"],
   "minimumReleaseAge": "3 days",
   "platformCommit": "enabled",
+  "postUpdateOptions": ["pnpmDedupe"],
   "semanticCommits": "disabled",
   "packageRules": [
     {
