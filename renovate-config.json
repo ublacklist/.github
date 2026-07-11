@@ -3,7 +3,8 @@
   "extends": [
     "config:best-practices",
     "group:allNonMajor",
-    "helpers:disableTypesNodeMajor"
+    "helpers:disableTypesNodeMajor",
+    ":automergeMinor"
   ],
   "enabledManagers": ["npm", "github-actions"],
   "minimumReleaseAge": "3 days",
