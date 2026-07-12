@@ -6,7 +6,18 @@
     "helpers:disableTypesNodeMajor",
     ":automergeMinor"
   ],
-  "enabledManagers": ["npm", "github-actions"],
+  "enabledManagers": ["npm", "github-actions", "git-submodules"],
+  "schedule": ["* * * * 5"],
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
+  "git-submodules": {
+    "enabled": true,
+    "schedule": ["* * * * 4"],
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "schedule": ["* * * * 0#L"]
+  },
   "minimumReleaseAge": "3 days",
   "platformCommit": "enabled",
   "postUpdateOptions": ["pnpmDedupe"],
@@ -17,8 +28,5 @@
       "matchPackageNames": ["@ublacklist/*"],
       "minimumReleaseAge": null
     }
-  ],
-  "lockFileMaintenance": {
-    "schedule": ["* * L * *"]
-  }
+  ]
 }
