@@ -24,8 +24,8 @@
   "semanticCommits": "disabled",
   "packageRules": [
     {
-      "description": "First-party packages; skip the release-age waiting period and update immediately",
-      "matchPackageNames": ["@ublacklist/*"],
+      "description": "First-party packages and actions; skip the release-age waiting period and update immediately",
+      "matchPackageNames": ["@ublacklist/*", "iorate/*"],
       "minimumReleaseAge": null
     }
   ]
