@@ -13,7 +13,7 @@
   "git-submodules": {
     "enabled": true,
     "schedule": ["* * * * 4"],
-    "automerge": true
+    "minimumReleaseAge": null
   },
   "lockFileMaintenance": {
     "schedule": ["* * * * 0#L"]
