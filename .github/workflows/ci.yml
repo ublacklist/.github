@@ -18,6 +18,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  renovate-config-validator:
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run renovate-config-validator
+        uses: docker://ghcr.io/renovatebot/renovate:44.82.0@sha256:965b516ae9e7209610725b092fb09298fe6e240f242b6773e5852412f80adc5e
+        with:
+          args: renovate-config-validator --strict --no-global renovate-config.json
+
   actionlint:
     runs-on: ubuntu-latest
 
