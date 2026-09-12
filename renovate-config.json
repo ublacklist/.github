@@ -39,6 +39,11 @@
       "matchDatasources": ["node-version"],
       "ignoreUnstable": false,
       "allowedVersions": "!/-/"
+    },
+    {
+      "description": "Track @types/node in step with Node.js Current releases",
+      "matchPackageNames": ["@types/node"],
+      "ignoreUnstable": false
     }
   ]
 }
