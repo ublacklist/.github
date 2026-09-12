@@ -30,6 +30,11 @@
       "minimumReleaseAge": null
     },
     {
+      "description": "Git submodules have no release timestamp; do not wait for a release age",
+      "matchManagers": ["git-submodules"],
+      "minimumReleaseAge": null
+    },
+    {
       "description": "Track Node.js Current releases instead of waiting for LTS",
       "matchJsonata": ["versioning = 'node'"],
       "ignoreUnstable": false,
