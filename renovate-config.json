@@ -36,14 +36,9 @@
     },
     {
       "description": "Track Node.js Current releases instead of waiting for LTS",
-      "matchDatasources": ["node-version"],
+      "matchJsonata": ["versioning = 'node'"],
       "ignoreUnstable": false,
       "allowedVersions": "!/-/"
-    },
-    {
-      "description": "Track @types/node in step with Node.js Current releases",
-      "matchPackageNames": ["@types/node"],
-      "ignoreUnstable": false
     }
   ]
 }
