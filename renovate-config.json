@@ -2,7 +2,6 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:best-practices", "group:allNonMajor", ":automergeMinor"],
   "enabledManagers": ["npm", "github-actions", "git-submodules", "custom.jsonata"],
-  "schedule": ["* * * * 5"],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
   "lockFileMaintenance": {
@@ -25,9 +24,16 @@
   ],
   "packageRules": [
     {
-      "description": "First-party packages and actions; skip the release-age waiting period and update immediately",
-      "matchPackageNames": ["@ublacklist/*", "iorate/*"],
-      "minimumReleaseAge": null
+      "description": "Batch minor and patch updates weekly; everything else is raised as soon as it is available",
+      "matchUpdateTypes": ["minor", "patch"],
+      "schedule": ["* * * * 5"]
+    },
+    {
+      "description": "First-party packages and actions; update immediately in their own group",
+      "matchPackageNames": ["@iorate/*", "@ublacklist/*", "iorate/*"],
+      "minimumReleaseAge": null,
+      "schedule": null,
+      "groupName": "first-party packages"
     },
     {
       "description": "Git submodules have no release timestamp; do not wait for a release age",
