@@ -11,6 +11,9 @@
   "platformCommit": "enabled",
   "postUpdateOptions": ["pnpmDedupe"],
   "semanticCommits": "disabled",
+  "git-submodules": {
+    "enabled": true
+  },
   "customManagers": [
     {
       "description": "Update devEngines.runtime in package.json",
@@ -24,6 +27,11 @@
   ],
   "packageRules": [
     {
+      "description": "Git submodules have no release timestamp; do not wait for a release age",
+      "matchManagers": ["git-submodules"],
+      "minimumReleaseAge": null
+    },
+    {
       "description": "Batch minor and patch updates weekly; everything else is raised as soon as it is available",
       "matchUpdateTypes": ["minor", "patch"],
       "schedule": ["* * * * 5"]
@@ -31,14 +39,17 @@
     {
       "description": "First-party packages and actions; update immediately in their own group",
       "matchPackageNames": ["@iorate/*", "@ublacklist/*", "iorate/*"],
+      "groupName": "first-party packages",
       "minimumReleaseAge": null,
-      "schedule": null,
-      "groupName": "first-party packages"
+      "schedule": null
     },
     {
-      "description": "Git submodules have no release timestamp; do not wait for a release age",
-      "matchManagers": ["git-submodules"],
-      "minimumReleaseAge": null
+      "description": "Treat minor updates of 0.x dependencies like majors: separate PRs, no automerge",
+      "matchCurrentVersion": "<1",
+      "matchUpdateTypes": ["minor"],
+      "groupName": null,
+      "schedule": null,
+      "automerge": false
     },
     {
       "description": "Track Node.js Current releases instead of waiting for LTS",
