@@ -44,14 +44,6 @@
       "schedule": null
     },
     {
-      "description": "Treat minor updates of 0.x dependencies like majors: separate PRs, no automerge",
-      "matchCurrentVersion": "<1",
-      "matchUpdateTypes": ["minor"],
-      "groupName": null,
-      "schedule": null,
-      "automerge": false
-    },
-    {
       "description": "Track Node.js Current releases instead of waiting for LTS",
       "matchJsonata": ["versioning = 'node'"],
       "ignoreUnstable": false,
