@@ -1,16 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
   "extends": ["config:best-practices", "group:allNonMajor", ":automergeMinor"],
-  "enabledManagers": ["npm", "github-actions", "git-submodules", "custom.jsonata"],
+  "ignorePresets": ["abandonments:recommended"],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
-  "lockFileMaintenance": {
-    "schedule": ["* * * * 0#L"]
-  },
-  "minimumReleaseAge": "3 days",
   "platformCommit": "enabled",
   "postUpdateOptions": ["pnpmDedupe"],
   "semanticCommits": "disabled",
+
+  "enabledManagers": ["npm", "github-actions", "git-submodules", "custom.jsonata"],
   "git-submodules": {
     "enabled": true
   },
@@ -25,6 +24,8 @@
       ]
     }
   ],
+
+  "minimumReleaseAge": "3 days",
   "packageRules": [
     {
       "description": "Git submodules have no release timestamp; do not wait for a release age",
@@ -34,7 +35,7 @@
     {
       "description": "Batch minor and patch updates weekly; everything else is raised as soon as it is available",
       "matchUpdateTypes": ["minor", "patch"],
-      "schedule": ["* * * * 5"]
+      "schedule": ["* 12-17 * * 5"]
     },
     {
       "description": "First-party packages and actions; update immediately in their own group",
@@ -49,5 +50,8 @@
       "ignoreUnstable": false,
       "allowedVersions": "!/-/"
     }
-  ]
+  ],
+  "lockFileMaintenance": {
+    "schedule": ["* 18-23 * * 5"]
+  }
 }
