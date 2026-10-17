@@ -49,6 +49,11 @@
       "matchJsonata": ["versioning = 'node'"],
       "ignoreUnstable": false,
       "allowedVersions": "!/-/"
+    },
+    {
+      "description": "lefthook 2.2.2 was published without provenance and is rejected by pnpm trustPolicy (evilmartians/lefthook#1600)",
+      "matchPackageNames": ["lefthook"],
+      "allowedVersions": "!/^2\\.2\\.2$/"
     }
   ],
   "lockFileMaintenance": {
